@@ -21,6 +21,6 @@ ProxyCommand ssh bastion nc -q0 %h 22
 ```
 * Connect to someinternalhost:
 ```shell
-ssh someinternalhost:
+ssh someinternalhost
 ```
 
