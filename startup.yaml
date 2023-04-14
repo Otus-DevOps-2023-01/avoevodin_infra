@@ -1,0 +1,21 @@
+#cloud-config
+users:
+  - name: ycloud
+    groups: sudo
+    shell: /bin/bash
+    sudo: ['ALL=(ALL) NOPASSWD:ALL']
+    ssh_authorized_keys:
+      - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQCxCfeySPmmgpVRghApt5F0myz+QNCsjvAhpI1klUiM1ykMni5Rnf5Q8aCmcG7uNjqqydaYxUD6vA2BzdPkRM+uIUe4DHfRNwuXuYPkRt5yx6FZHLbV8qBEnedSZHD57C7N6UPTd3YLQpOqHPRCVkHQ/to4F+8FVy/sKLJv6gtE4Wygp4uNSRfCPHQNQ9PjYCJVGbKA3G3zbhVp2Ve/o90/FmzRi05VYC3Kuck1iFS+pqBMbYjxwhTBezMnqp6vrgzPW17g5oCH571br78RraCYcMTkPUkHux5hQ7wt6Sz9U6upUUi0j9zAlGOnEP8H1OeLlgot8MzV8VAboB2jlAExvJ8sVKDrlF+sI9u3RdDHgRJEDfZaIILkrdOhTQuPqkqB2o6E/7vv4GJy/mPdFkjZF4HG+Mq8Y8L3jd/X9rG1x+OqwLdJ7pXp9splHMcsWZ/9FoVYzrM2Qk+Dpgcx3UC2vBHh5XlY9jeKKs91EH0d9vNk1t7IPpy/9sOcCzxhpes= ycloud
+
+runcmd:
+  - apt update
+  - apt install -y ruby-full ruby-bundler build-essential
+  - apt update
+  - apt install mongodb -y
+  - systemctl start mongodb
+  - systemctl enable mongodb
+  - cd /home/ycloud
+  - apt install git -y
+  - git clone -b monolith https://github.com/express42/reddit.git
+  - cd reddit && bundle install
+  - puma -d
