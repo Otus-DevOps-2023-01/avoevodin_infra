@@ -1,7 +1,7 @@
 #!/bin/bash
-apt update
-apt install mongodb -y
+sudo apt update
+sudo apt install mongodb -y
 
 # start MongoDB
-systemctl start mongodb
-systemctl enable mongod
+sudo systemctl start mongodb
+sudo systemctl enable mongod
