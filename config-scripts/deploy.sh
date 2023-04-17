@@ -4,7 +4,7 @@
 cd /home/yc-user
 
 # Install git
-sudo apt install git
+apt install git
 
 # Clone app repository
 git clone -b monolith https://github.com/express42/reddit.git
