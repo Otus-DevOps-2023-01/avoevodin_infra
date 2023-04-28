@@ -1,0 +1,9 @@
+{
+	"my_key": "./key.json",
+	"my_folder_id": "some_folder_key",
+	"my_image": "ubuntu-1604-lts",
+	"my_disk_size": "15",
+	"my_memory_gb": "2",
+	"my_disk_name": "reddit-base",
+	"my_image_family": "reddit-base"
+}
